@@ -1,0 +1,13 @@
+.vscode
+.cache
+*.log
+build
+log
+install
+build_image
+build_ros2
+dist
+.DS_Store
+src/brain/config/config_local.yaml
+src/vision/config/vision_local.yaml
+tools/calib_lab/out/measurements.csv
