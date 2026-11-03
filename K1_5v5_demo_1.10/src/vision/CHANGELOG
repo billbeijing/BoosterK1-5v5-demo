@@ -1,0 +1,42 @@
+## demo 1.10.0 (2026.11.03)
+1. 基线 1.9.0 (3v3), 所有上车参数保持不变
+2. feature: tools/calib_lab 离线标定实验场 (几何 1:1 移植 + 敏感度 + 补偿反解)
+3. feature: fit_from_csv.py 用真机测量反解 pitch/yaw/z/x/y
+4. docs: CALIBRATION_1.10.md 给出误差预算、10 分钟标定流程与验收标准
+
+## demo 1.9.0 (2026.11.02)
+1. 以 1.8_3p (3v3) 为基线, 参数/行为不变
+2. feature: 模型路径缺失时回退到 share/vision/model/<文件名>, 不再依赖启动目录
+3. cleanup: 去掉重复的图像订阅(队列 1 + 2 各建一次)
+4. release: 包版本号统一为 1.9.0
+
+## demo 1.8_3p (2026.11.02)
+1. 与 1.8 完全相同, 仅 number_of_players 改回 3 (3v3)
+
+## demo 1.8 (2026.11.02)
+1. 参数: 5v5 人数 (number_of_players=5)、d-robotics 相机 FOV (103.9/92.9) 与 brain 对齐
+2. 参数: 球置信度双门限 (vision Ball 0.35 / brain 50)、单球假设、NMS 0.45
+3. feature: 大力踢球 (power_kick 可配置速度/时长)
+4. feature: 射门远角瞄准 (aim_margin / aim_ratio / aim_side + 迟滞)
+5. bugfix: 头部追球用针孔 atan 映射替代线性近似, 修正画面边缘约 25% 的角度欠估
+6. bugfix: game_controller 默认关闭 IP 白名单, 避免换场地后收不到裁判机广播
+
+## 1.0.4 (2025.05.19)
+1. feature: add support for zed, orbbec and d-robotics camera
+2. feature: update detection model
+3. bugfix: incorrect classification result for realsense camera
+
+## 1.0.3 (2025.05.11)
+1. feature: add robot color classifier
+2. bugfix: incorrect online calibration results caused by shallow memory copy
+
+## 1.0.2 (2025.03.07)
+1. feature: save data when robot headpose is non-stationary
+2. feature: add multi-thread data logger
+3. misc: add in-house small-field finetune model and old model
+
+## 1.0.1 (2025.02.27)
+1. feature: add post-processing:
+   a. different confidence thresholds for each class.
+   b. use depth to filter out incorrect ball detection.
+   c. save vision_local.yaml when saving data is enabled
